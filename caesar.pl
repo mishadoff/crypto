@@ -4,7 +4,11 @@
 
 if (@ARGV && $ARGV[0] && $ARGV[1]) {
     foreach (split(//, uc($ARGV[1]))) {
-        print chr(65 + (ord($_) - 65 + $ARGV[0]) % 26);
+        if (ord($_) <= 90 && ord($_) >= 65) {
+            print chr(65 + (ord($_) - 65 + $ARGV[0]) % 26);
+        } else {
+            print $_;
+        }
     }
     print "\n";
 } else {
